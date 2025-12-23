@@ -1,5 +1,5 @@
 // Configuration
-const BACKEND_URL = 'https://script.google.com/macros/s/AKfycbwgZ-CvpBQjQ_12oiaEjCFuq4pTM6hor7bohWPdEaS_PRWI4LCTclQfrTlWQipRvJf_/exec'; // Replace with your web app URL
+const BACKEND_URL = 'https://script.google.com/macros/s/AKfycbwyECyYQdJLWfKb8o1P-VaXKtzAYHgPMZPfpP6VVx2o4T5C-x1Qd2upi8AKk6ZkdPpL/exec'; // Replace with your web app URL
 
 // State Management
 let currentUser = null;
