@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Union Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Slab:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Union<span>Hub</span></a>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#donation" class="nav-link">Donations</a>
+                <div class="auth-buttons">
+                    <button id="loginBtn" class="btn-outline">Login</button>
+                    <button id="signupBtn" class="btn-primary">Sign Up</button>
+                    <button id="logoutBtn" class="btn-outline" style="display:none;">Logout</button>
+                    <span id="userName" class="user-name"></span>
+                </div>
+            </div>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Login/Signup Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Welcome Back</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="auth-tabs">
+                    <button class="tab-btn active" data-tab="login">Login</button>
+                    <button class="tab-btn" data-tab="signup">Sign Up</button>
+                    <button class="tab-btn admin-tab" data-tab="admin">Admin</button>
+                </div>
+                
+                <form id="loginForm" class="auth-form active">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn-primary btn-block">Login</button>
+                    <p class="form-footer">Don't have an account? <a href="#" class="switch-tab" data-tab="signup">Sign up</a></p>
+                </form>
+                
+                <form id="signupForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="signupName">Full Name</label>
+                        <input type="text" id="signupName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email</label>
+                        <input type="email" id="signupEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupAddress">Full Address</label>
+                        <textarea id="signupAddress" rows="2" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPhone">Phone Number</label>
+                        <input type="tel" id="signupPhone" required>
+                    </div>
+                    <button type="submit" class="btn-primary btn-block">Create Account</button>
+                    <p class="form-footer">Already have an account? <a href="#" class="switch-tab" data-tab="login">Login</a></p>
+                </form>
+                
+                <form id="adminForm" class="auth-form">
+                    <div class="admin-notice">
+                        <i class="fas fa-shield-alt"></i>
+                        <p>Admin login for Union Hub management</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="adminEmail">Admin Email</label>
+                        <input type="email" id="adminEmail" value="admin@community.com" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="adminPassword">Admin Password</label>
+                        <input type="password" id="adminPassword" required>
+                    </div>
+                    <button type="submit" class="btn-primary btn-block">Admin Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="container">
+                <div class="section-header">
+                    <h1>Community <span>Union Hub</span></h1>
+                    <p class="section-subtitle">When people come together, anything is possible. Driving engagement and real change in our community.</p>
+                </div>
+                
+                <!-- Union Details -->
+                <div class="union-details card">
+                    <h2><i class="fas fa-users"></i> About Our Union</h2>
+                    <p>Our community union brings together 15 dedicated leaders working tirelessly to improve living conditions, advocate for members' rights, and foster community development. With a focus on transparency and member engagement, we've achieved significant milestones in housing, education, and local infrastructure.</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <h3>15</h3>
+                            <p>Union Leaders</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>98%</h3>
+                            <p>Member Engagement</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>45%</h3>
+                            <p>Issues Resolved</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>8+</h3>
+                            <p>Years of Service</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Union Leaders -->
+                <div class="leaders-section">
+                    <h2><i class="fas fa-star"></i> Our Union Leaders</h2>
+                    <p class="section-subtitle">Meet the dedicated individuals driving change in our community</p>
+                    
+                    <div class="admin-controls" id="adminControls" style="display:none;">
+                        <h3>Admin Controls</h3>
+                        <div class="admin-form">
+                            <input type="text" id="leaderName" placeholder="Leader Name">
+                            <textarea id="leaderWork" placeholder="Work done by leader" rows="2"></textarea>
+                            <button id="addLeaderBtn" class="btn-primary">Add Leader</button>
+                            <button id="updateLeadersBtn" class="btn-secondary">Refresh Leaders</button>
+                        </div>
+                    </div>
+                    
+                    <div class="leaders-grid" id="leadersGrid">
+                        <!-- Leaders will be loaded dynamically -->
+                        <div class="loading">Loading union leaders...</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1>Contact <span>Us</span></h1>
+                    <p class="section-subtitle">Have a message for the admin? Reach out directly. Real conversations drive real change.</p>
+                </div>
+                
+                <div class="contact-container">
+                    <div class="contact-info card">
+                        <h3><i class="fas fa-comments"></i> Direct Communication</h3>
+                        <p>"It feels more like you're talking to humans rather than screaming into the internet."</p>
+                        <div class="contact-details">
+                            <p><i class="fas fa-envelope"></i> admin@community.com</p>
+                            <p><i class="fas fa-clock"></i> Response within 24 hours</p>
+                            <p><i class="fas fa-shield-alt"></i> Your messages are confidential</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form card">
+                        <h3>Send Message to Admin</h3>
+                        <form id="messageForm">
+                            <div class="form-group">
+                                <label for="messageName">Your Name</label>
+                                <input type="text" id="messageName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="messageEmail">Your Email</label>
+                                <input type="email" id="messageEmail" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="messageSubject">Subject</label>
+                                <input type="text" id="messageSubject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="messageContent">Your Message</label>
+                                <textarea id="messageContent" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary btn-block">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Section -->
+        <section id="donation" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1>Donation <span>Status</span></h1>
+                    <p class="section-subtitle">Track your monthly contributions and support our community initiatives</p>
+                </div>
+                
+                <!-- Admin Controls for Donations -->
+                <div class="admin-donation-controls" id="adminDonationControls" style="display:none;">
+                    <h2><i class="fas fa-cog"></i> Admin Donation Management</h2>
+                    <div class="admin-panel">
+                        <div class="admin-form">
+                            <h3>Update Donation Status</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="donorSelect">Select Member</label>
+                                    <select id="donorSelect">
+                                        <option value="">Select a member</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="monthSelect">Month</label>
+                                    <select id="monthSelect">
+                                        <option value="January">January</option>
+                                        <option value="February">February</option>
+                                        <option value="March">March</option>
+                                        <option value="April">April</option>
+                                        <option value="May">May</option>
+                                        <option value="June">June</option>
+                                        <option value="July">July</option>
+                                        <option value="August">August</option>
+                                        <option value="September">September</option>
+                                        <option value="October">October</option>
+                                        <option value="November">November</option>
+                                        <option value="December">December</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="statusSelect">Status</label>
+                                    <select id="statusSelect">
+                                        <option value="Paid">Paid</option>
+                                        <option value="Unpaid">Unpaid</option>
+                                    </select>
+                                </div>
+                                <button id="updateDonationBtn" class="btn-primary">Update Status</button>
+                            </div>
+                        </div>
+                        
+                        <div class="donation-stats">
+                            <h3>Monthly Summary</h3>
+                            <div class="stats-grid">
+                                <div class="stat-card paid">
+                                    <h4 id="paidCount">0</h4>
+                                    <p>Paid This Month</p>
+                                </div>
+                                <div class="stat-card unpaid">
+                                    <h4 id="unpaidCount">0</h4>
+                                    <p>Pending</p>
+                                </div>
+                                <div class="stat-card total">
+                                    <h4 id="totalMembers">0</h4>
+                                    <p>Total Members</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- User Donation View -->
+                <div class="user-donation-view">
+                    <h2><i class="fas fa-history"></i> Your Donation History</h2>
+                    <div class="view-toggle">
+                        <button class="toggle-btn active" data-view="table">Table View</button>
+                        <button class="toggle-btn" data-view="cards">Card View</button>
+                    </div>
+                    
+                    <div class="donation-table-container">
+                        <table class="donation-table" id="donationTable">
+                            <thead>
+                                <tr>
+                                    <th>Month</th>
+                                    <th>Status</th>
+                                    <th>Date Updated</th>
+                                </tr>
+                            </thead>
+                            <tbody id="donationTableBody">
+                                <tr>
+                                    <td colspan="3" class="no-data">Please login to view your donation status</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="donation-cards" id="donationCards" style="display:none;">
+                        <!-- Donation cards will be loaded here -->
+                    </div>
+                </div>
+                
+                <!-- All Members Donation Status (Admin Only) -->
+                <div class="all-donations" id="allDonations" style="display:none;">
+                    <h2><i class="fas fa-list-alt"></i> All Members Donation Status</h2>
+                    <div class="table-responsive">
+                        <table class="full-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
+                                    <th>January</th>
+                                    <th>February</th>
+                                    <th>March</th>
+                                    <th>April</th>
+                                    <th>May</th>
+                                    <th>June</th>
+                                    <th>July</th>
+                                    <th>August</th>
+                                    <th>September</th>
+                                    <th>October</th>
+                                    <th>November</th>
+                                    <th>December</th>
+                                </tr>
+                            </thead>
+                            <tbody id="allDonationsBody">
+                                <!-- All donations data loaded here for admin -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Union<span>Hub</span></h3>
+                    <p>Connecting our community through transparency and engagement.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#home">Home</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#donation">Donations</a>
+                </div>
+                <div class="footer-contact">
+                    <h4>Get In Touch</h4>
+                    <p><i class="fas fa-envelope"></i> support@unionhub.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Community Union Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
